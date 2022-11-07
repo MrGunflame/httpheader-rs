@@ -1,0 +1,7 @@
+[package]
+name = "httpheader"
+description = "Parsers for common http headers"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
