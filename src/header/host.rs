@@ -2,6 +2,9 @@ use crate::error::Error;
 use crate::parser::{Parse, Span};
 use crate::types::Port;
 
+/// The `Host` header.
+///
+/// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Host for more information.
 pub struct Host<'a> {
     pub host: &'a str,
     pub port: Option<Port>,

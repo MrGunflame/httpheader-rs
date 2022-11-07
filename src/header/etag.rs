@@ -1,7 +1,9 @@
 use crate::error::Error;
 use crate::parser::{Parse, Span};
 
-/// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
+/// The `ETag` header.
+///
+/// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag for more information.
 #[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
 pub enum Etag<'a> {
     Weak(&'a str),
@@ -27,6 +29,9 @@ impl<'a> Parse<'a> for Etag<'a> {
     }
 }
 
+/// The `If-Match` header.
+///
+/// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-Match for more information.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum IfMatch<'a> {
     Etags(Vec<Etag<'a>>),
@@ -53,6 +58,9 @@ impl<'a> Parse<'a> for IfMatch<'a> {
     }
 }
 
+/// The `If-None-Match` header.
+///
+/// See https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match for more information.
 #[derive(Clone, Debug, PartialEq, Eq, Hash)]
 pub enum IfNoneMatch<'a> {
     Etags(Vec<Etag<'a>>),

@@ -70,3 +70,9 @@ impl From<u16> for Port {
         Self(port)
     }
 }
+
+impl PartialEq<u16> for Port {
+    fn eq(&self, other: &u16) -> bool {
+        self.0 == *other
+    }
+}

@@ -67,6 +67,27 @@ impl<'a> Span<'a> {
             }),
         }
     }
+
+    pub fn split_off(&mut self, pat: &str) -> Result<Span<'a>> {
+        let end = match self.inner.find(pat) {
+            Some(i) => i,
+            None => {
+                return Err(Error {
+                    position: 0,
+                    expected: "",
+                })
+            }
+        };
+
+        let elem = Span {
+            inner: &self.inner[..end],
+        };
+
+        let start = end + pat.len();
+
+        self.inner = &self.inner[start..];
+        Ok(elem)
+    }
 }
 
 #[derive(Copy, Clone, Debug)]
